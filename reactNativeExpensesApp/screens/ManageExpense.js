@@ -2,7 +2,6 @@ import { useContext, useLayoutEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import IconButton from '../components/UI/IconButton';
 import { GlobalStyles } from '../util/styles';
-import Button from '../components/UI/Button';
 import { ExpensesContext } from '../components/Store/store';
 import ExpenseForm from '../components/ManageExpense/ExpenseForm';
 
@@ -10,6 +9,7 @@ function ManageExpense({ route, navigation }) {
 	const expenseId = route?.params?.id;
 	const isEditing = !!expenseId;
 	const expensesCtx = useContext(ExpensesContext);
+	const selectedExpense = expensesCtx.expenses.find((expense) => expense.id === expenseId);
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -26,32 +26,23 @@ function ManageExpense({ route, navigation }) {
 		navigation.goBack();
 	};
 
-	const confirmHandler = () => {
+	const confirmHandler = (expenseData) => {
 		if (isEditing) {
-			expensesCtx.updateExpense(expenseId, {
-				description: 'Test Updated!!!',
-				amount: 29.99,
-				date: new Date('2024-07-02'),
-			});
+			expensesCtx.updateExpense(expenseId, expenseData);
 		} else {
-			expensesCtx.addExpense({
-				description: 'Test!!!',
-				amount: 19.99,
-				date: new Date('2024-07-01'),
-			});
+			expensesCtx.addExpense(expenseData);
 		}
 		navigation.goBack();
 	};
 
 	return (
 		<View style={styles.container}>
-			<ExpenseForm />
-			<View style={styles.buttons}>
-				<Button mode="flat" onPress={cancelHandler} style={styles.button}>
-					Cancel
-				</Button>
-				<Button onPress={confirmHandler}>{isEditing ? 'Update' : 'Add'}</Button>
-			</View>
+			<ExpenseForm
+				onSubmit={confirmHandler}
+				onCancel={cancelHandler}
+				defaultValues={selectedExpense}
+				buttonLabel={isEditing ? 'Update' : 'Add'}
+			/>
 			{isEditing && (
 				<View style={styles.deleteContainer}>
 					<IconButton icon="trash" color={GlobalStyles.colors.error500} size={36} onPress={deleteExpenseHandler} />
@@ -75,14 +66,5 @@ const styles = StyleSheet.create({
 		borderTopWidth: 2,
 		borderTopColor: GlobalStyles.colors.primary200,
 		alignItems: 'center',
-	},
-	buttons: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	button: {
-		minWidth: 120,
-		marginHorizontal: 8,
 	},
 });

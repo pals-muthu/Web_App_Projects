@@ -1,18 +1,18 @@
 {
   "jobs": [
     {
-      "id": "1",
-      "title": "Senior Vue Developer",
       "type": "Full-Time",
+      "title": "Senior Vue Developer1",
       "description": "We are seeking a talented Front-End Developer to join our team in Boston, MA. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as Vue or Angular.",
-      "location": "Boston, MA",
       "salary": "$70K - $80K",
+      "location": "Boston, MA",
       "company": {
         "name": "NewTek Solutions",
         "description": "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
         "contactEmail": "contact@teksolutions.com",
         "contactPhone": "555-555-5555"
-      }
+      },
+      "id": "1"
     },
     {
       "id": "2",
@@ -194,34 +194,6 @@
         "description": "Occaecat voluptate i",
         "contactEmail": "xebyp@mailinator.com",
         "contactPhone": "+1 (351) 496-2744"
-      }
-    },
-    {
-      "id": "1107",
-      "type": "Remote",
-      "title": "Tanner Hamilton",
-      "description": "Recusandae Incidunt",
-      "salary": "$125K - $150K",
-      "location": "Laboriosam dolorem ",
-      "company": {
-        "name": "Price and Avery Trading",
-        "description": "Est doloremque veli",
-        "contactEmail": "bolerored@mailinator.com",
-        "contactPhone": "+1 (748) 295-8006"
-      }
-    },
-    {
-      "id": "0ef5",
-      "type": "Remote",
-      "title": "Ivory Castaneda",
-      "description": "Ea aut modi aut qui ",
-      "salary": "Over $200K",
-      "location": "Harum officiis quo v",
-      "company": {
-        "name": "Bass and Stokes Plc",
-        "description": "Sequi reiciendis sap",
-        "contactEmail": "hicymepa@mailinator.com",
-        "contactPhone": "+1 (156) 926-2358"
       }
     }
   ]
